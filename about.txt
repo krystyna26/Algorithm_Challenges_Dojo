@@ -1,0 +1,13 @@
+ var remain = cent;
+    var q = Math.floor(remain/25);
+    remain = remain%25;
+
+    var d = Math.floor(remain/10);
+    remain = remain%10;
+
+    var n = Math.floor(remain/5);
+    remain = remain%5;
+
+    // console.log(cent + " cents can be represented by...." + q + d + n)
+    // return cent + " cents can be represented by...." + q + d + n;
+    return q;
