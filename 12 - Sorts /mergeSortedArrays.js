@@ -1,31 +1,40 @@
 function mergeSortedArrays(arr1, arr2){
-    var j = arr1.length-1;
-    arr1.length += arr1.length;
-    var k= arr2.length-2;
-    for(var i=arr1.length-1; i>=0; i--){
-        if(arr2[k]>arr1[j] || j>0){
-            arr1[i] = arr2[k];
-            k--;
-        }else if(arr1[k] < arr1[j] || k>0){
-            arr1[i] = arr1[j];
-            j--;
+    var len1 = arr1.length, len2 = arr2.length;
+    var combinedLength = len1 + len2 - 1;
+
+    for(var i = combinedLength; i >= 0; i--){
+
+        if(arr1[len1-1] >= arr2[len2-1]){
+            arr1[i] = arr1[len1-1];
+            len1--;
+
+        }else if(arr1[len1-1] < arr2[len2-1]){
+            arr1[i] = arr2[len2-1];
+            len2--
+        }
+
+        if(len1 == 0){
+            if(len2 == 0){
+                break
+            }
+            arr1[i-1] = arr2[len2-1]
+            len2--;
         }
     }
     return arr1;
 }
 
-var test1 = [2,3,6,9];
-var test2 = [1,3,5,7];
-mergeSortedArrays(test1, test2)
-console.log("mergeSortedArrays",test1);
+var test2 = [2,3];
+var test1 = [1,4,5,7,8,9,10, 95];
+// console.log("mergeSortedArrays",mergeSortedArrays(test1, test2));
 // ================================================
 function mergeArray(arr1, arr2){
     var arr = [];
-    while(arr1.length>0 || arr2.length>0){
-        if(arr1.length<1){
+    while(arr1.length > 0 || arr2.length > 0){
+        if(arr1.length < 1){
             arr.concat(arr2);
             break;
-        }else if(arr2.length<1){
+        }else if(arr2.length < 1){
             arr.concat(arr1);
             break;
         }else{
@@ -42,7 +51,7 @@ function mergeArray(arr1, arr2){
 var test4 = [5,2,8,3,0,1,3];
 var test5 = [7,6,4];
 mergeArray(test4, test5)
-console.log("mergeArray:",mergeArray);
+console.log("mergeArray:",mergeArray(test4, test5));
 // ================================================
 var mergeOrderArr = function (arr1,arr2){
     var result = [],
@@ -60,7 +69,7 @@ var mergeOrderArr = function (arr1,arr2){
 }
 
 var b = mergeOrderArr([1,100], [3,4,6,8]);
-console.log("mergeOrderArr",b)
+// console.log("mergeOrderArr",b)
 
 // ================================================
 
@@ -90,5 +99,7 @@ function mergeSort2(arr){
 }
 
 var test6 = [6,2,8,4,3,5,1];
-mergeSort2(test6);
-console.log("mergeSort2",mergeSort2);
+// console.log("mergeSort2:",mergeSort2(test6));
+
+
+

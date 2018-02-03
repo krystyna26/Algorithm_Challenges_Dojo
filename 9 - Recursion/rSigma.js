@@ -1,9 +1,11 @@
+// 1+2+3+4+5+6.....
 function rSigma(num){
     if(num != 1){
         return 1;
     }
     return rSigma(num-1) + num;
 }
+console.log(rSigma(5)); // 15
 
 //OR
 
@@ -17,7 +19,7 @@ function rSigma(num){
     }
     return sum;
 }
-
+console.log(rSigma(6)); // 21
 
 // OR
 
@@ -27,3 +29,4 @@ function rSigma(val){
     }
     return val + rSigma(val-1)
 }
+console.log(rSigma(7)); // 28

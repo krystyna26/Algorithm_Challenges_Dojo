@@ -1,103 +1,53 @@
+function BSTNode(val){
+    this.val = val;
+    this.left = null;
+    this.right = null;
+    // this.count = 1;
+}
+
 function BST(){
     this.root = null;
 }
 
-function BTNode(val){
-    this.val = val;
-    this.left = null;
-    this.right = null;
-}
-
-BST.prototype.contains = function(val){
-    if(this.root == null){
-        return false;
-    }else {
-        var temp = root;
-        while(temp){
-            if(temp.val == val){ 
-                return true;
-            }
-            if(val >= temp.val){
-                temp = temp.right;
-            }else{
-                temp = temp.left;
-            }
-        }
-        return false;
-    }
-}
-
 BST.prototype.add = function(val){
-    if(this.root){
+    var newNode = new BSTNode(val);
+    if(!this.root){
+        this.root = newNode;
+    }else{
         var temp = this.root;
-        var node = null;
         while(temp){
+            // If value is greater than or equal
             if(val >= temp.val){
                 if(!temp.right){
-                    node = temp;
+                    temp.right = newNode;
+                    break;
+                }else{
+                    temp = temp.right;
                 }
-                temp = temp.right;
-            }else{
+
+            // If value is less than
+            }else if(val < temp.val){
                 if(temp.left == null){
-                    node = temp;
+                    temp.left = newNode;
+                    break;
+                }else{
+                    temp = temp.left;
                 }
-                temp = temp.left
             }
         }
-        var newNode = new BTNode(val);
-        console.log("node",node)
-        if(val >= node.val){
-
-            node.right = newNode;
-        }else{
-            node.left = newNode;
-        }
-    }else{
-        this.root = new BTNode(val);
-        return this;
     }
+    return this;
 }
 
 var myBST = new BST();
-console.log("adding 2")
-myBST.add(2);
-myBST.add(7);
-myBST.add(5);
-console.log("myBST",myBST)
+myBST.add(30);
+myBST.add(50);
+myBST.add(25);
+myBST.add(11);
+// myBST.add(9);
+console.log("=========== Added to tree =========== ")
+console.log(myBST);
 
-
-BST.prototype.extraAdd = function(val){
-    // if the BST has no root, make the root with the value given and return
-    if(!this.root){
-        this.root = new BTNode(val);
-        return this;
-    }
-    // if BST has root, assign current to thr root
-    var current = this.root;
-    while(current){
-        // if the value given is grather than or equal to current value
-        if(val >= current.val){
-            // move right if possible
-            if(current.right){
-                current = current.right;
-            }else{
-                // assign the right node to the given value
-                current.right = new BTNode(val);
-                return this;
-            }
-        }else{
-            // if the value given is less than the current value
-            if(current.left){
-                // move left if possible
-                current = current.left;
-            }else{
-                //assign left node to the given value
-                current.left = new BTNode(val);
-                return this;
-            }
-        }
-    }
-}
 
 BST.prototype.size = function(node){
     var leftCount = 0;
@@ -112,12 +62,16 @@ BST.prototype.size = function(node){
         leftCount = this.size(node.left)
     }
     if(node.right){
-        rightCount = this.size(sode.right)
+        rightCount = this.size(node.right)
     }
-    return i + leftCount + rightCount
+    return 1 + leftCount + rightCount
 }
 
-BTNode.prototype.min = function(){
+console.log("Tree size:", myBST.size());
+
+
+
+BST.prototype.min = function(){
     if(this.root == null){
         return false;
     }
@@ -125,57 +79,88 @@ BTNode.prototype.min = function(){
     while(current.left){
         current = current.left;
     }
-    return current.left;
-    // if(this.left){
-    //     return this.left.min();
-    // }
-    // return this.val;
+    return current.val;
 }
 
-BTNode.prototype.max = function(){
+console.log("Tree min value:", myBST.min());
+
+
+
+BST.prototype.max = function(){
     var current = this.root;
-    while(current){
+    while(current.right){
         current = current.right;
     }
     return current.val;
 }
 
+console.log("Tree max value:", myBST.max());
 
-BTNode.prototype.height = function(){
-    if(!this.left && !this.right){
+
+
+BST.prototype.height = function(node){
+    if(!node.left && !node.right){
         return 1;
-    }else if(!this.left){
-        return 1 + this.right.height();
+    }else if(!node.left){
+        return 1 + this.height(node.right);
     }else if(!this.right){
-        return 1 + this.left.height();
+        return 1 + this.height(node.left);
     }else{
-        var leftHeight = this.left.height();
-        var rightHeight = this.right.height();
+        var leftHeight = this.height(node.left);
+        var rightHeight = this.height(node.right);
         var maxHeight = leftHeight > rightHeight ? leftHeight : rightHeight;
         return 1 + maxHeight;
     }
+    
 }
 
+console.log("Tree height:", myBST.height(myBST.root));
+
+
+// ???????????????????????????????????????????????
 BST.prototype.orderTraverse = function(){
-    if(!this.root){
-        return false;
-    }else{
-        return this.root.orderTraverse();
-    }
+    // if(!this.root){
+    //     return false;
+    // }else{
+    //     return orderTraverse(root.left);
+    // }
+
+    // console.log(root.data);
+    // if(root.left){
+    //     this.orderTraverse(root.left);
+    // }
+    // if(root.right){
+    //     this.orderTraverse(root.right)
+    // }
+
+    var result = [];
+    var node = this.root;
+    var traverse = function(node) {
+        result.push(node.value);
+        node.left && traverse(node.left);
+        node.right && traverse(node.right);
+    };
+    traverse(node);
+    return result;
 }
 
-BTNode.prototype.orderTraverse = function(){
-    console.log(this.val);
-    if(this.left){
-        this.left.orderTraverse();
-    }
-    if(this.right){
-        this.right.orderTraverse();
-    }
-}
+console.log("Tree after traversing:", myBST.orderTraverse(myBST.root));
 
-myBST.orderTraverse();
+// BST.prototype.orderTraverse = function(){
+//     console.log(this.val);
+//     if(this.left){
+//         this.left.orderTraverse();
+//     }
+//     if(this.right){
+//         this.right.orderTraverse();
+//     }
+// }
 
+// myBST.orderTraverse();
+
+
+
+// ???????????????????????????????????????
 BST.prototype.isBalanced = function(){
     if(this.root == null){
         return false;
@@ -195,3 +180,5 @@ BST.prototype.isBalanced = function(){
     }else 
         return 1;
 }
+
+console.log("Is this tree balanced?", myBST.isBalanced());

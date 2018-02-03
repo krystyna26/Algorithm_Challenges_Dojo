@@ -28,3 +28,6 @@ var mySLL = new SLList();
 mySLL.add(2);
 mySLL.add(4);
 console.log(mySLL);
+
+var mynode = new Node(33);
+console.log(mynode);

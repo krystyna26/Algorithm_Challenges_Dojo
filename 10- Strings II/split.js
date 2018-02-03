@@ -1,3 +1,4 @@
+// given a string of words, return array of words
 function split(str){
     var punOrSpace = {"":true, "/n":true, "/t":true, ".":true }
     var arr = [];

@@ -1,45 +1,55 @@
-function DLL(){
-    this.head = null;
-    this.tail = null;
-}
-
-function DNode(val){
-    this.val = val;
+function DNode(value){
+    this.value = value;
     this.next = null;
     this.previous = null;
 }
 
+function DLL(){
+    this.head = null;
+    this.tail = null;
+    // this.length = length;
+    this.display = function() {
+        var current = this.head;
+        var string = "DLL values: ";
+        while(current.next) {
+            string += current.value + " <=> ";
+            current = current.next;
+        }
+        string += current.value;
+        console.log(string);
+        return this;
+    }
+  }
+
+// add to the end
 DLL.prototype.add = function(val){
     var myNode = new DNode(val)
     if(this.head){
-        var temp = this.tail;
+        this.tail.next = myNode;
+        myNode.previous = this.tail;
         this.tail = myNode;
-        myNode.previous = temp;
-        temp.next = myNode;
-        // this.tail.next = node;
-        // node.previous = this.tail;
-        // this.tail = node;
     }else{
         this.head = myNode;
         this.tail = myNode;
     }
     return myNode;
 }
-
-DLL.prototype.searchNodeAt = function(position){
+                                            // works !
+DLL.prototype.searchNodeAt = function(idx){
     var current = this.head;
     var count = 1;
-    if(position < 1){
+    if(idx < 1){
         return "Error"
     }
-    while(count < position){
+    while(count < idx){
         current = current.next;
         count++;
     }
+    console.log("position:", idx)
     return current;
 }
-
-DLL.prototype.insert = function(insertAfter, val){
+                                                    // doesn't work
+DLL.prototype.insertAfterValue = function(insertAfter, val){
     var myNode = new DNode(val);
     if(this.head){
         var current = this.head;
@@ -53,7 +63,7 @@ DLL.prototype.insert = function(insertAfter, val){
                     temp.previous = myNode;
                 }else{
                     current.next = myNode;
-                    myNode.next = current;
+                    myNode.previous = current;
                     this.tail = myNode
                 }
                 return this;
@@ -63,29 +73,69 @@ DLL.prototype.insert = function(insertAfter, val){
     }else{
         this.add(val);
     }
+    return this;
 }
-
+                                        
+                                        // doesn't work
 DLL.prototype.delete = function(val){
     if(!this.head){
         return this;
     }else{
+        // var count = 1;
+        var before = null;
+        var after = null;
+        var nodeToDelete = null;
         var current = this.head;
-        while(current){
-            if(current.val == val){
-                if(current == this.head){
-                    var prevNode = current.previous;
-                    var nextNode = current.next;
-                    prevNode.next = nextNode;
-                    nextNode.previous = prevNode;
-                    current.next = null;
-                    current.previous = null;
-                    return this;
-                }
-                current = current.next;
+        // first node is removed
+        if(current.val == val){
+            this.head = current.next;
+            // and second node exist
+            if(!this.head){
+                this.head.previous = null;
+            }else{
+                // there is no second node
+                this.tail = null;
             }
-            return false;
+        }else if(this.tail == null){
+            // last node is removed
+            this.tail = this.tali.previous;
+            this.tail.next = null;
+        }else{
+            // middle node is removed
+            while(current){
+                if(current.val == val){
+                    // unattached
+                    before.next = after;
+                    after.previous = before;
+                    nodeToDelete = null;
+                }
+                before = current.previous;
+                nodeToDelete = current;
+                after = current.next;
+
+                current = current.next;
+                // count++;
+            }
         }
+
+        // while(current){
+        //     if(current.val == val){
+        //         // if(current == this.head){
+        //             var prevNode = current.previous;
+        //             console.log("prevNode", prevNode.display())
+        //             var nextNode = current.next;
+        //             prevNode.next = nextNode;
+        //             nextNode.previous = prevNode;
+        //             current.next = null;
+        //             current.previous = null;
+        //             return this;
+        //         }
+        //         current = current.next;
+        //     // }
+        //     // return false;
+        // }
     }
+    return this;
 }
 // https://code.tutsplus.com/articles/data-structures-with-javascript-singly-linked-list-and-doubly-linked-list--cms-23392
 // finish from remove
@@ -97,19 +147,26 @@ DLL.prototype.pop = function(){
     // remove final node
 } 
 
-DLL.prototype.display = function(){
-    // string with all values in list
-} 
 
+var myDLL = new DLL();
+myDLL.add(2);
+myDLL.add(3);
+myDLL.add(4);
+myDLL.add(5);
 
-var myDLL = new DLL()
-myDLL.add(2)
-myDLL.add(3)
-myDLL.add(4)
-myDLL.add(5)
+console.log("--------DLL Before--------");
+myDLL.display();
 
-console.log(myDLL)
-myDLL.delete(2)
-console.log(myDLL)
+// console.log("--------Found node at --------");
+// console.log(myDLL.searchNodeAt(2));
+// myDLL.display();
+
+console.log("--------Inserted new node: --------");
+myDLL.insertAfterValue(3, 88);
+myDLL.display();
+
+// console.log("--------After delete--------");
+// myDLL.delete(3);
+// myDLL.display();
 
 // https://stackoverflow.com/questions/31284954/doubly-linked-list-in-javascript

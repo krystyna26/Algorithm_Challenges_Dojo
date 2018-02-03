@@ -1,18 +1,49 @@
-function removeValue(liasNode, val){
-    if(!list.head){
-        return false;
-    }
-    var prev = listNode.head;
-    var current = prev.next;
-    while(current){
-        if(current.val === val){
-            prev.next = current.next;
-            current = prev.next;
-            return listNode;
+function Node(value){
+    this.value = value;
+    this.next = null;
+}
+
+function SLList() {
+    this.head = null;
+    this.display = function () {
+        var current = this.head;
+        var string = "Node values: ";
+        while(current.next) {
+          string += current.value + " -> ";
+          current = current.next;
         }
-        prev = prev.next;
-        current = current.next;
+        string += current.value;
+        console.log(string);
+        return this;
     }
-    return false;
+}
+
+SLList.prototype.removeValue = function(val){
+    if(this.head.value === val){
+		this.head = this.head.next;
+		return;
+	}
+	var prev = null;
+	var current = this.head;
+	while(current.value != val){
+		prev = current;
+		current = current.next;
+	}
+    prev.next = current.next;
 }
     
+var list1 = new SLList();
+var node1 = new Node(6);
+var node2 = new Node(7);
+var node3 = new Node(8);
+var node4 = new Node(3);
+list1.head = node1;
+node1.next = node2;
+node2.next = node3;
+node3.next = node4;
+
+console.log("--------Before--------");
+list1.display();
+console.log("--------After--------");
+list1.removeValue(8);
+list1.display();

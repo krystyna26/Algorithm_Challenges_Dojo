@@ -5,7 +5,7 @@ function Node(value){
 
 function SLList() {
     this.head = null;
-    this.display = function () {
+    this.displayList = function () {
         var current = this.head;
         var string = "Node values: ";
         while (current.next) {
@@ -55,7 +55,7 @@ node2.next = node3;
 node3.next = node4;
 
 console.log("--------Before--------");
-list1.display();
+list1.displayList();
 console.log("--------After--------");
 list1.prependValue(8, 44);
-list1.display();
+list1.displayList();

@@ -1,21 +1,26 @@
-function fibonacci(n){
-    if(n==0 || n==1){
-        return n;
+// 0, 1, 1, 2, 3, 5, 8, 13, 21, 34,
+// The Rule is xn = xn-1 + xn-2
+
+function fibonacciRecursive(n){
+    // console.log("start n", n)
+    if(n==0){
+        return 0;
+    }
+    else if(n==1){
+        // console.log("n", n)
+        return 1;
     }else{
-        return fibonacci(n-2) + fibonacci(n-1)
+        return fibonacciRecursive(n-2) + fibonacciRecursive(n-1)
     }
 }
 //OR
 
-function fib(num){
+function fibonacci(num){
     if(num <=2){
         return 1;
     }
-    return fib(num-1) + fib(num-2)
+    return fibonacci(num-1) + fibonacci(num-2)
 }
 
-
-
-console.log(fibonacci(5))
-
-console.log(fib(5))
+console.log(fibonacciRecursive(6))
+console.log(fibonacci(8))

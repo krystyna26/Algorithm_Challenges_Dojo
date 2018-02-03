@@ -9,7 +9,7 @@ function SLList() {
         var current = this.head;
         var string = "Node values: ";
         while(current.next) {
-          string += current.value + ", ";
+          string += current.value + " -> ";
           current = current.next;
         }
         string += current.value;
