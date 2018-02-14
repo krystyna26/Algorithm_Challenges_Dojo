@@ -8,9 +8,9 @@ function coinChange(cents){
 }
 
 var test = 134; // cents -> $1.34
-coinChange(test)
+coinChange(test)// Q:5, D:0, N:1, P:4
 
-//  It truncates (cuts off) the dot and the digits to the right of it, 
+//  Math.trunc - truncates (cuts off) the dot and the digits to the right of it, 
 // no matter whether the argument is a positive or negative number.
 
 // Math.trunc(13.37);    // 13

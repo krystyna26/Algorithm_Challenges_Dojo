@@ -6,6 +6,6 @@ function sigma(num) {
     return sum;
   }
   
-  console.log(sigma(5));
+  console.log(sigma(5)); // 15
 
   // Ex: sigma(3) = 6 -> (1+2+3)
