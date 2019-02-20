@@ -19,7 +19,7 @@ function SLQueue(){
       }
 }
 
-// remove and return value at front of queue
+// remove and return value at the front of queue
 SLQueue.prototype.dequeue = function(){
     if (!this.head) {
         console.log("Queue is empty");

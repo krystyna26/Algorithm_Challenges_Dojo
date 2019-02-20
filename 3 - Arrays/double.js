@@ -3,10 +3,10 @@
 function double(arr){
     var newArr = [];
     var j = 0;
-    for(var i=0; i<arr.length; i++){
+    for(var i = 0; i < arr.length; i++){
       newArr[j] = arr[i];
       newArr[j+1] = arr[i];
-      j = j+2;
+      j = j + 2;
     }
     return newArr;
   }
@@ -19,7 +19,7 @@ console.log(double(arr));
 
 function doubleInPlace(arr){
     var d = arr.length * 2;
-    for(var x=arr.length-1; x>=0; x--){
+    for(var x = arr.length-1; x >= 0; x--){
         arr[d-1] = arr[x];
         arr[d-2] = arr[x];
         d = d-2;
@@ -27,5 +27,5 @@ function doubleInPlace(arr){
     return arr;
 }
 
-var a = [1,2,4,6,9,10];
+var a = [1,2,4,6,10, -5];
 console.log(doubleInPlace(a));

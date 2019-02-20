@@ -1,48 +1,50 @@
-function Node(value){
-    this.value = value;
-    this.next = null;
+function Node(value) {
+  this.value = value;
+  this.next = null;
 }
 
 function SLList() {
-    this.head = null;
-    this.displayList = function () {
-        var current = this.head;
-        var string = "Node values: ";
-        while (current.next) {
-          string += current.value + ", ";
-          current = current.next;
-        }
-        string += current.value;
-        console.log(string);
-        return this;
-      }
+  this.head = null;
+  this.displayList = function() {
+    var current = this.head;
+    var string = "Node values: ";
+    while (current.next) {
+      string += current.value + ", ";
+      current = current.next;
+    }
+    string += current.value;
+    console.log(string);
+    return this;
+  };
 }
 
-SLList.prototype.prependValue = function(beforeVal, newVal){
-    var newNode = new Node(newVal);
-    if(!this.head){
-        this.head = newNode;
-    }else{
-        var current = this.head;
-        if(current.value === beforeVal) {
-            var temp = this.head;
-            this.head = newNode;
-            newNode.next = temp;
-        }else{
-            while(current.next) {
-                if(current.next.value === beforeVal) {
-                    var temp = current.next;
-                    current.next = newNode;
-                    newNode.next = temp;
-                    break;
-                }
-                current = current.next;
-            }
-            current.next = newNode;
+// insert a new node with newValue immediately before the node 'before'
+// or at the end of lists if no node contains 'before' value
+SLList.prototype.prependValue = function(beforeVal, newVal) {
+  var newNode = new Node(newVal);
+  if (!this.head) {
+    this.head = newNode;
+  } else {
+    var current = this.head;
+    if (current.value === beforeVal) {
+      var temp = this.head;
+      this.head = newNode;
+      newNode.next = temp;
+    } else {
+      while (current.next) {
+        if (current.next.value === beforeVal) {
+          var temp = current.next;
+          current.next = newNode;
+          newNode.next = temp;
+          break;
         }
+        current = current.next;
+      }
+      current.next = newNode;
     }
-    return this;
-}
+  }
+  return this;
+};
 
 var list1 = new SLList();
 var node1 = new Node(6);

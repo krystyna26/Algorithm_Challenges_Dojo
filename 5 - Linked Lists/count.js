@@ -32,5 +32,4 @@ node2.next = node3;
 node3.next = node4;
 
 console.log(list1);
-var x = list1.lengthOfSLL();
-console.log(x);
+console.log("length:",list1.lengthOfSLL());

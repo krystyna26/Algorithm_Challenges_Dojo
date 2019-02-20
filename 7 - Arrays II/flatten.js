@@ -19,15 +19,15 @@
 // or without creating new array
 
 function flatten(arr){
-    for(var i=0; i<arr.length; i++){
+    for(var i = 0; i < arr.length; i++){
         var outlen = arr.length-1;
         if(arr[i] instanceof Array){
             var inlen = arr[i].length-1;
-            for(var x=outlen; x>0; i--){
+            for(var x = outlen; x > 0; i--){
                 console.log("x",x)
                 arr[x+inlen] = arr[x]
             }
-            for(var y=i+inlen; y>i; y--){
+            for(var y = i+inlen; y > i; y--){
                 console.log("y",y)
                 arr[y] = arr[i][inlen];
                 inlen--;

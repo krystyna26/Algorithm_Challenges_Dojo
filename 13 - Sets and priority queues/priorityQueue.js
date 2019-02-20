@@ -9,7 +9,7 @@ function MPNode(val, p){
 }
 
 minPriorityQueue.prototype.enqueue = function(val, p){
-    var node = new MPNode(cal, p);
+    var node = new MPNode(val, p);
     if(!this.head){
         this.head = node;
         return;

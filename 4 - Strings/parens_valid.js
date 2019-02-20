@@ -4,15 +4,16 @@
 
 function parenthesis(str){
     var arr = [];
-    for(var i=0; i< str.length; i++){
+    for(var i = 0; i< str.length; i++){
         if(str[i] == "("){
             console.log(arr.push(str[i]));
-            console.log(str)
+            console.log("push", arr)
         }else if(str[i] == ")"){
             if(arr.length == 0){
                 return false;
             }else{
-            arr.pop();
+                arr.pop();
+                console.log("pop")
             }
         }
     }

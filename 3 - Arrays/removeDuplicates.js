@@ -16,10 +16,6 @@ function removeDuplicates(arr){
             console.log("count ", count);
         }
     }
-    // for(var i=0; i<hop; i++){
-    //     var x = arr.pop();
-    //     console.log(x)
-    // }
     var i = arr.length - 1;
     while(i > hop){
         arr.pop();
@@ -28,5 +24,5 @@ function removeDuplicates(arr){
     return arr;
 }
 
-var arr1 = [1, 1, 1, 2, 2, 2, 2, 3, 3, 4, 5, 5, 5, 6, 6,7,7,8,8,9,9,10];
+var arr1 = [-2, -2, 1, 1, 1, 2, 2, 2, 2, 3, 3, 4, 5, 5, 5, 6, 6,7,7,8,8,9,9,10];
 console.log(removeDuplicates(arr1));

@@ -1,4 +1,5 @@
-// given a string and arrays of words, return the new string with naughty words changes to "x" characters
+// given a string and arrays of words, return the new string with 
+// naughty words changes to "x" characters
 function censor(str, list){
     var nStr = str;
     for(var i=0; i< list.length; i++){
@@ -43,5 +44,39 @@ function censor(str, list){
 
 var test = "Snack poop crackers";
 var test1 = ["crack", "poop"];
-
+// "Snack xxxx xxxxxers"
 console.log(censor(test, test1))
+
+// You are climbing a staircase that has n steps. 
+// You can take the steps either 1 or 2 at a time. 
+// Calculate how many distinct ways you can climb to the top of the staircase.
+function climbingStairs(n) {
+    // 	if(n <= 2){
+    // 		return n 
+    // 	}
+    // 	else{
+    // 		return climbingStairs(n-1) + climbingStairs(n-2);
+    // 	}
+    // num: n,
+    // [Symbol.iterator]: function*() {
+    // 	yield climbingStairs(n-1) + climbingStairs(n-2);
+    // 	}
+    }
+    
+    
+    
+    
+    var a = 1;
+    console.log(climbingStairs(a)); // 1
+    
+    var n = 26;
+    console.log(climbingStairs(n)); // 196418
+    
+    var b = 42;
+    console.log(climbingStairs(b)); // 433494437
+    
+    // function x(){
+    
+    // }
+    
+    // console.log(x)

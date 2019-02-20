@@ -1,5 +1,5 @@
-// Create a function that returns a Boolean whether the string is a strict
-// palindrome
+// Create a function that returns a Boolean whether 
+// the string is a strict palindrome
 
 function palindrome(string){
     for (var i=0; i<Math.floor(string.length/2); i++){

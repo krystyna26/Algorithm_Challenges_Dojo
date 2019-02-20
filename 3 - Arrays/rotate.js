@@ -26,4 +26,5 @@ function rotate(arr, R) {
     }
     return arr;
 }
-console.log(rotate([1,2,3,4,5,6,7], 2)); 
+console.log(rotate([1,2,3,4,5,6,7], 2)); // [ 6, 7, 1, 2, 3, 4, 5 ]
+console.log(rotate([1,2,3,4,5,6,7], 4)); // [ 4, 5, 6, 7, 1, 2, 3 ]

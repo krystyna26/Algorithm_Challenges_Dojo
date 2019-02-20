@@ -1,4 +1,4 @@
-// Create a JavaScript function that given a string, returns
+// Create a function that given a string, returns
 // the integer made from the string's digits.
 
 function getDigit(str){
@@ -10,6 +10,10 @@ function getDigit(str){
         }
     }
     return(digitStr);
+
 }
+
+
+
 
 console.log(getDigit("Par3se8")); // 38

@@ -1,0 +1,41 @@
+
+var user = {"username": "Sally", "profile": { "name": "Sally Clojurian", "address": { "city": "Austin", "state": "TX"}}}
+
+function getFunc (obj, par, definition){
+    if(!obj){
+        console.log("definition", definition)
+        return definition
+    }else{
+        console.log("obj", obj, "obj[par]:", obj[par], "par:", par)
+        console.log(obj.par, "HEEEEEEEERRRRRRRRRRREEEEEEE")
+        return obj[par]
+    }
+}
+
+
+function get_in(user, arr, not_found){
+    // if(!not_found){
+    //     return reduce(getFunc(), user, arr);
+    // }else {
+        if(arr.length == 0){
+            console.log("user:", user)
+            return user;
+        }else{
+            console.log("arr sliced", arr.slice(0,1))
+            var v = getFunc(user[arr.slice(0,1)], arr.slice(0,1));
+                if(!v){
+                    console.log("not found:", not_found)
+                    return not_found;
+                }else{
+                    console.log("recursion called")
+                    console.log("rest of array:", arr.slice(1))
+                    return get_in(user, arr.slice(1), not_found)
+                }
+        }
+    // }
+}
+
+console.log("get-in til name:",get_in(user, [ "profile", "name"]))
+// "Sally Clojurian"
+console.log("get-in til city:",get_in(user, [ "profile", "name", "city"]))
+// "Austin"

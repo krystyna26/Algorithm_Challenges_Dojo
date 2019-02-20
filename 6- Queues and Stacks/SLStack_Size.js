@@ -28,7 +28,7 @@ SLQueue.prototype.sizeStack = function(stack1){
     current = stack1.head;
     while(current){
         count++;
-        current = customElements.next;
+        current = current.next;
     }
     return count;
 }

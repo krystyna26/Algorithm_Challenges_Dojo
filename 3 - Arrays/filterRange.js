@@ -1,6 +1,7 @@
-function filterRange(arr,min,max){ // [4,3,6,8,6,10], 2, 8
+// retain only array values between min and max
+function filterRange(arr, min, max){ // [4,3,6,8,6,10], 2, 8
     var r = 0;
-    for(var i=0; i<arr.length; i++){
+    for(var i = 0; i < arr.length; i++){
         if(arr[i] < max && arr[i] > min){
             arr[r] = arr[i];
             r++;
@@ -13,18 +14,18 @@ function filterRange(arr,min,max){ // [4,3,6,8,6,10], 2, 8
 var arr =[1,2,3,4,5,6,7,8,9];
 var min = 2;
 var max = 7;
-console.log(filterRange(arr, min, max));
+console.log(filterRange(arr, min, max)); // [3,4,5,6]
 
 // =======================================
-function removeRange(arr, start, end) {
-    for (var count = 0; count < (end - start + 1); count++) {
-        removeAt(arr, start);
+function removeRange(arr, startIdx, endIdx) {
+    for (var count = 0; count < (endIdx - startIdx + 1); count++) {
+        removeAtIndex(arr, startIdx);
     }
     return arr;
 }
 
-//: Helper function for removing array element at index
-function removeAt(arr, idx) {
+// Helper function for removing array element at index
+function removeAtIndex(arr, idx) {
         var val = arr[idx];
         for (var i=idx; i < arr.length-1; i++) {
             var temp = arr[i];
@@ -32,6 +33,7 @@ function removeAt(arr, idx) {
             arr[i+1] = temp;
         }
         arr.pop();
+        console.log("removed value", val)
         return val;
 }
 

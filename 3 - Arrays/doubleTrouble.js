@@ -1,5 +1,5 @@
-
-function double(arr) {
+// double each element in array, retaining original order
+function doubleTrouble(arr) {
     var count = arr.length;
     for (var i = count-1; i >= 0; i--) {
         // console.log(i, arr, arr[i]);
@@ -15,4 +15,4 @@ function double(arr) {
 }
 
 var arr1 = [4, 'Ulysses', 42, false];
-console.log(double(arr1));
+console.log(doubleTrouble(arr1));

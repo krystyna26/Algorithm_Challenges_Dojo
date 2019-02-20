@@ -1,15 +1,13 @@
-// add value to stack
 function Node(value){
     this.value = value;
     this.next = null;
 }
-
-function SLQueue(){
-    this.head = null;
-    this.tail = null;
+function Stack(){
+    this.count = 0;
+    this.storage = {};
     this.display = function () {
         var current = this.head;
-        var string = "Queue values: ";
+        var string = "Stack values: ";
         while(current.next) {
           string += current.value + " -> ";
           current = current.next;
@@ -20,6 +18,7 @@ function SLQueue(){
       }
 }
 
+// add value to stack
 SLQueue.prototype.pushStack = function(val){
     if(this.head === null){
         this.head = new Node(val);
