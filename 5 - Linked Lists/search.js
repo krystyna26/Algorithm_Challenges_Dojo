@@ -49,4 +49,4 @@ node3.next = node4;
 node4.next = node5;
 // Node values: 1 -> 3 -> 5 -> 2 -> 4 -> null
 
-list1.search(1);
+list1.search(3);

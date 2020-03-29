@@ -1,35 +1,39 @@
-function Node(value){
-    this.value = value;
-    this.next = null;
+function Node(value) {
+  this.value = value;
+  this.next = null;
 }
-function Stack(){
-    this.count = 0;
-    this.storage = {};
-    this.display = function () {
-        var current = this.head;
-        var string = "Stack values: ";
-        while(current.next) {
-          string += current.value + " -> ";
-          current = current.next;
-        }
-        string += current.value;
-        console.log(string);
-        return this;
-      }
+function SLQueue() {
+  this.head = null;
+  this.tail = null;
+}
+
+function Stack() {
+  this.count = 0;
+  this.storage = {};
+  this.display = function() {
+    var current = this.head;
+    var string = "Stack values: ";
+    while (current.next) {
+      string += current.value + " -> ";
+      current = current.next;
+    }
+    string += current.value;
+    console.log(string);
+    return this;
+  };
 }
 
 // add value to stack
-SLQueue.prototype.pushStack = function(val){
-    if(this.head === null){
-        this.head = new Node(val);
-        return this;
-    }
-    var temp = this.head;
+SLQueue.prototype.pushStack = function(val) {
+  if (this.head === null) {
     this.head = new Node(val);
-    this.head.next = temp;
     return this;
-}
-
+  }
+  var temp = this.head;
+  this.head = new Node(val);
+  this.head.next = temp;
+  return this;
+};
 
 var list1 = new SLQueue();
 var node1 = new Node(1);
@@ -47,9 +51,8 @@ console.log("--------After--------");
 list1.pushStack(5);
 list1.display();
 
-
 // Adds a value onto the end of the stack
 Stack.prototype.push = function(value) {
-    this.storage[this.count] = value;
-    this.count++;
-}
+  this.storage[this.count] = value;
+  this.count++;
+};

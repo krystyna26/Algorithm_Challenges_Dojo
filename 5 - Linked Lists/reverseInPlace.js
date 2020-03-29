@@ -2,6 +2,7 @@ function Node(value) {
   this.value = value;
   this.next = null;
 }
+
 function SLList() {
   this.head = null;
   this.display = function() {

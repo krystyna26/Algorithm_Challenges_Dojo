@@ -32,6 +32,7 @@ SLList.prototype.maxFront = function() {
       }
       current = current.next;
     }
+
     if (max == this.head) {
     } else {
       prev.next = max.next;
